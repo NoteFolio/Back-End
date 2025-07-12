@@ -1,2 +1,1 @@
-# NoteFolio
-프로젝트 todo
+NoteFolio Back-end

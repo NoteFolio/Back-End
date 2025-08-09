@@ -6,6 +6,7 @@ import com.example.notefolio.user.dto.request.RequestSignupDto;
 import com.example.notefolio.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,11 @@ public class UserController {
         if (!b){
             return ResponseEntity.badRequest().body("fail");
         }
+        return ResponseEntity.ok("success");
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<?> authTest(@RequestBody RequestSignupDto rsd) {
         return ResponseEntity.ok("success");
     }
 }

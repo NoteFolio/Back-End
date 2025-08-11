@@ -3,14 +3,15 @@ spring:
     include: oauth
   config:
     import:
-      - optional:file:.env
+      - optional:file:.env[.properties]
 
   datasource:
-    url: jdbc:mysql://localhost:3306/${DB_NAME}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: jdbc:mysql://localhost:3306/notefolio
+    username: root
+    password: 6030
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update # 또는 create, create-drop, none
     show-sql: true # JPA가 생성하는 SQL을 콘솔에 출력
@@ -26,3 +27,6 @@ logging:
         type:
           descriptor:
             sql: TRACE # SQL 파라미터 로깅
+
+jwt:
+  secret: ${JWT_SECRET}

@@ -5,6 +5,7 @@ import com.example.notefolio.security.jwt.JwtAuthFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -30,7 +31,7 @@ public class SecurityConfig {
                 .formLogin(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request ->
                         request
-                                .requestMatchers( "/**").permitAll()  // 토큰 발급을 위한 경로는 모두 허용
+                                .requestMatchers( "/signin", "/signup","/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()  //토큰 발급 및 스웨거는 허용
                                 .anyRequest().authenticated() // 그외 모든 요청은 인증 필요
                 );
 
